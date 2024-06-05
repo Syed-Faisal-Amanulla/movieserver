@@ -38,7 +38,7 @@ router.post('/signup', async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Email Verification',
-      html: `<p>Click <a href="http://localhost:3000/verify/${verificationToken}">here</a> to verify your email.</p>`,
+      html: `<p>Click <a href="https://movieclient.vercel.app/verify/${verificationToken}">here</a> to verify your email.</p>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -71,7 +71,7 @@ router.get('/verify/:token', async (req, res) => {
     console.log('User verified:', user.email);
 
     // Redirect to sign-in page after verification
-    res.redirect('http://localhost:3000/signin');
+    res.redirect('https://movieclient.vercel.app/signin');
   } catch (err) {
     console.error('Error in verification:', err.message);
     res.status(500).send('Server error');
@@ -146,7 +146,7 @@ router.post('/forgot-password', async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Password Reset',
-      html: `<p>Click <a href="http://localhost:3000/reset-password/${resetToken}">here</a> to reset your password. The Link will expire in 1 hour.</p>`,
+      html: `<p>Click <a href="https://movieclient.vercel.app/reset-password/${resetToken}">here</a> to reset your password. The Link will expire in 1 hour.</p>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
