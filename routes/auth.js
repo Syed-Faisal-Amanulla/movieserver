@@ -33,7 +33,6 @@ router.post('/signup', async (req, res) => {
         pass: process.env.EMAIL_PASS,
       },
     });
-    console.log(process.env.EMAIL_USER)
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
