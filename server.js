@@ -19,11 +19,14 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.log('MongoDB connection error:', err));
 
+/*
+
 // Root route
 app.get('/', (req, res) => {
   res.send('Server is running!');
 });
 
+*/
 
 // Define Routes
 app.use('/api/auth', require('./routes/auth'));
