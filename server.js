@@ -26,6 +26,19 @@ app.get('/', (req, res) => {
 });
 
 
+// MongoDB keep-alive route
+app.get('/db-check', async (req, res) => {
+  try {
+    await mongoose.connection.db.listCollections().toArray();
+    res.send('MongoDB is alive!');
+  } catch (err) {
+    console.error('MongoDB ping failed:', err.message);
+    res.status(500).send('MongoDB connection error');
+  }
+});
+
+
+
 // Define Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/playlists', playlistRoutes);
